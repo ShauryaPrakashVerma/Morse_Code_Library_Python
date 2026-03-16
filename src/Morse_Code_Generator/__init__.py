@@ -1,5 +1,5 @@
-from .encoder import encoder
-from .decoder import decoder
+from .encoder import encode
+from .decoder import decode
 
-encoder()
-decoder()
+
+decode()

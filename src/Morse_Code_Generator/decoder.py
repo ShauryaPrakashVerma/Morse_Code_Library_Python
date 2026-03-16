@@ -1,2 +1,2 @@
-def decoder():
+def decode():
     print("Decoded")
