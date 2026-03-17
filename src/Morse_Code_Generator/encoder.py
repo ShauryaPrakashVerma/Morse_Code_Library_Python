@@ -2,7 +2,7 @@ from .utils import build_lookup
 
 LOOKUP = build_lookup()
 
-def encode(input_msg):
+def encode(input_msg) -> str:
     
     """
     Encode a string into Morse Code
