@@ -11,11 +11,19 @@ from Morse_Code_Generator.utils import load_language
 
 # print("\nTesting encoder:")
 # print(encode("SOS"))
-print(encode("HELLO WORLD i am shaurya"))
+# print(encode("ПРИВЕТ", "russian"))
 # print(encode("123"))
 
 
 # print("--------------------------------------------------------")
-print(decode(".... . .-.. .-.. --- / .-- --- .-. .-.. -..", "english"))
-print(decode("... --- ..."))
-print(decode(encode("HELLO WORLD i am shaurya")))
+# print(decode(".... . .-.. .-.. --- / .-- --- .-. .-.. -..", "english"))
+# print(decode("... --- ..."))
+# print(decode(encode("HELLO WORLD i am shaurya")))
+
+# print("\nTesting Russian:")
+
+# print(encode("ПРИВЕТ", "russian"))
+# print(decode(".--. .-. .. .-- . -", "russian"))
+
+# print(encode("ПРИВЕТ МИР", "russian"))
+# print(decode(".--. .-. .. .-- . - / -- .. .-.", "russian"))
