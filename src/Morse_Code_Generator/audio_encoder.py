@@ -1,39 +1,58 @@
 import sounddevice as sd
-# from sounddevice import 
+import soundfile as sf
 import numpy as np
 
+
+FS = 44100
+FREQ = 700
+WPM = 20
 # from .encoder import encode
 
 
-def audio_encode() -> None:
-    fs = 40000  # Sample rate
-    duration = 0.1  # try even 0.05
 
-    t = np.linspace(0, duration, int(fs * duration), endpoint=False)
-    x = np.sin(2 * np.pi * 440 * t)
+def wpm_to_unit(wpm:int):
+    if wpm <= 0:
+        raise ValueError("WPM must be positive")
+    unit = (1.2 / wpm)*10
 
-    # 🔥 Apply envelope (VERY IMPORTANT)
-    fade_duration = 0.01  # 10 ms
-    fade_samples = int(fs * fade_duration)
 
-    envelope = np.ones_like(x)
+def generate_tone(freq, duration):
+    t = np.linspace(0 , duration, int(FS * duration), False)
+    tone = np.sin(2 * np.pi * freq * t)
+    return tone
 
-    # Fade-in
-    envelope[:fade_samples] = np.linspace(0, 1, fade_samples)
 
-    # Fade-out
-    envelope[-fade_samples:] = np.linspace(1, 0, fade_samples)
+def generate_silence(duration):
+    return np.zeros(int(FS * duration))
 
-    x = 0.5 * x * envelope  # apply envelope + volume
 
-    # Play audio
-    sd.play(x, fs)
-    sd.wait()
+def morse_to_audio(morse, wpm = 20, frequency = 700):
+    unit = 1.2 / wpm
     
-def generate_tone(freq, duration, sr=44100):
-    t = np.linspace(0, duration, int(sr * duration), False)
-    return np.sin(2 * np.pi * freq * t)
+    audio = []
+    
+    for symbol in morse:
+        if symbol == ".":
+            audio.extend(generate_tone(frequency, unit))
+        elif symbol == "-":
+            audio.extend(generate_tone(frequency, 3 * unit))
+        elif symbol == " ":
+            audio.extend(generate_silence(3 * unit))
+        elif symbol == "/":
+            audio.extend(generate_silence(7 * unit))
+            
+    return np.array(audio)
+    
 
-def silence(duration, sr=44100):
-    return np.zeros(int(sr * duration))
-audio_encode()
+def play_audio(audio):
+    sd.play(audio, FS)
+    sd.wait()
+
+def save_audio(audio, filename, FS):
+    sf.write(filename, audio, FS)
+
+
+
+a = morse_to_audio("...  ....  . -  . . -  . - .  - . - -  . -   /   . - - .   . - .   . -   - . -   . -   . . .   . . . .   /   . . . -   .   . - .   - -  . - ") 
+print(a)
+play_audio(a)
