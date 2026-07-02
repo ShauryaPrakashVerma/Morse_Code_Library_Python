@@ -6,6 +6,7 @@ A Python library for encoding, decoding, generating, and analyzing Morse code au
 
 📖 Documentation: https://shauryaprakashverma.github.io/pymorsed/
 
+[![PyPI Downloads](https://static.pepy.tech/personalized-badge/pymorsed?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/pymorsed)
 <br>
 
 ## Features
