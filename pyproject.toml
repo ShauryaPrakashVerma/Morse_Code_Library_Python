@@ -18,6 +18,7 @@ dependencies = [
     "matplotlib",
 ]
 
+
 keywords = [
     "morse",
     "morse-code",
@@ -46,3 +47,6 @@ Homepage = "https://github.com/ShauryaPrakashVerma/pymorsed"
 Repository = "https://github.com/ShauryaPrakashVerma/pymorsed"
 Documentation = "https://shauryaprakashverma.github.io/pymorsed/"
 Issues = "https://github.com/ShauryaPrakashVerma/pymorsed/issues"
+
+[project.scripts]
+pymorsed = "pymorsed.cli:main"
