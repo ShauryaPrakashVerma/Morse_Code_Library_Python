@@ -61,39 +61,105 @@ audio.
 
 ## `encode-audio`
 
-Convert text into a Morse-code audio signal.
+Convert text into a Morse-code audio signal and play the generated audio. The audio can optionally be saved to a file using the `-o` or `--output` option.
 
 ### Syntax
 
-``` bash
-pymorsed encode-audio <text>
+```bash
+pymorsed encode-audio <text> [-o <output_file>]
 ```
 
-### Argument
+### Arguments and Options
 
-  Argument    Required  Description
-  ---------- ---------- ----------------------------------------
-  `text`        Yes     Text to convert into Morse-code audio.
+| Argument / Option | Required | Description |
+|:---|:---:|:---|
+| `text` | Yes | Text to convert into Morse-code audio. |
+| `-o`, `--output` | No | Save the generated audio to the specified file. |
 
-### Example
+### Examples
 
-``` bash
+**Encode a single word:**
+
+```bash
 pymorsed encode-audio "HELLO"
+```
+
+This converts `HELLO` to Morse code and plays the generated audio.
+
+**Encode text without quotation marks:**
+
+```bash
 pymorsed encode-audio HELLO
 ```
 
-!!! tip "Using multiple words" 
-      Put text containing spaces inside quotation marks.
+!!! tip "Using multiple words"
+
+    Put text containing spaces inside quotation marks.
 
     ```bash
     pymorsed encode-audio "SOS HELP"
     ```
 
+### Saving the Generated Audio
+
+Use `-o` or `--output` to save the generated audio to a file.
+
+```bash
+pymorsed encode-audio "HELLO" -o hello.wav
+```
+
+The long form can also be used:
+
+```bash
+pymorsed encode-audio "HELLO" --output hello.wav
+```
+
+If no output option is provided, the generated audio is only played and is not saved.
+
+### Supported Output Formats
+
+The output format is determined by the file extension. Supported formats include:
+
+- `.wav`
+- `.flac`
+- `.ogg`
+
+You **do not need to provide the file extension explicitly**. If no extension is provided, `.wav` is used by default.
+
+For example:
+
+```bash
+pymorsed encode-audio "SOS" -o sos
+```
+
+saves the audio as:
+
+```text
+output/sos.wav
+```
+
+You can also explicitly specify a supported extension:
+
+```bash
+pymorsed encode-audio "SOS" -o sos.wav
+```
+
+```bash
+pymorsed encode-audio "SOS" -o sos.flac
+```
+
+!!! warning "Unsupported formats"
+
+    An unsupported file extension will result in an error. Use one of the supported audio formats when specifying `--output`.
+
 ### Command Help
 
-``` bash
+To view the available arguments and options:
+
+```bash
 pymorsed encode-audio --help
 ```
+
 
 ------------------------------------------------------------------------
 
@@ -215,9 +281,15 @@ The command structure follows a **subcommand-based design**:
 pymorsed
 │
 ├── encode
+│
 ├── decode
+│
 ├── encode-audio
+│   ├── text
+│   └── -o, --output
+│
 └── decode-audio
+    └── audio_file
 ```
 
 Each subcommand has its own parser and arguments. This provides:
