@@ -4,35 +4,6 @@
 
 # Support Piping
 
-# 1. Create cli.py
-#        ↓
-# 2. Create main()
-#        ↓
-# 3. Create argparse parser
-#        ↓
-# 4. Add encode subcommand
-#        ↓
-# 5. Connect encode → existing encode()
-#        ↓
-# 6. Add decode subcommand
-#        ↓
-# 7. Connect decode → existing decode()
-#        ↓
-# 8. Test with python -m pymorsed.cli
-#        ↓
-# 9. Add console-script entry point
-#        ↓
-# 10. Rebuild package
-#        ↓
-# 11. Install fresh package
-#        ↓
-# 12. Test `pymorsed --help`
-#        ↓
-# 13. Test `pymorsed encode`
-#        ↓
-# 14. Test `pymorsed decode`
-#        ↓
-# 15. Add piping
 #        ↓
 # 16. Add audio commands
 
@@ -157,16 +128,10 @@ if __name__ == "__main__":
     main()
     
     
-    
-    
-# CLI for audio_encoder
-# CLI for audio_decoder
 
-# Update documentation
 
 # Update version number
 
-# Add another language
 
 # Upload to test.pypi
 # Check

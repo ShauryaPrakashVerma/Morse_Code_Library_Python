@@ -9,6 +9,8 @@ pymorsed/
 │       ├── decoder.py
 │       ├── audio_encoder.py
 │       ├── audio_decoder.py
+│       ├── cli.py
+│       ├── utils.py
 │       └── languages/
 │           ├── english.json
 │           └── hindi.json

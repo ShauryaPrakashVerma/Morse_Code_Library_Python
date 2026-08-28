@@ -20,6 +20,7 @@ Python library for encoding, decoding, generating, and analyzing Morse code audi
 |----------|------|
 | English | `english` |
 | Russian | `russian` |
+| Hindi | `hindi` |
 
 Example:
 

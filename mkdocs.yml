@@ -6,12 +6,15 @@ nav:
   - Getting Started:
       - Installation: installation.md
       - Quick Start: usage.md
+        
+  - CLI:
+      - Command Line Interface: cli.md
 
   - Reference:
       - Function Usage: api.md
       - Project Structure: project_structure.md
 
-  - Contributing: contributing.md
+  # - Contributing: contributing.md
     
 theme:
   name: material

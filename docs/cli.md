@@ -3,10 +3,10 @@
 The **`pymorsed` CLI** provides a convenient way to use Morse-code
 functionality directly from the terminal.
 
-!!! tip "Quick Start" Install the package and check the available
-commands:
+!!! tip "Quick Start" 
+      Install the package and check the available commands:
 
-    ```bash
+    ``` bash
     pip install pymorsed
     pymorsed --help
     ```
@@ -27,8 +27,8 @@ After installation, verify that the CLI is available:
 pymorsed --help
 ```
 
-!!! note The `pymorsed` command is installed automatically with the
-package.
+!!! note 
+      The `pymorsed` command is installed automatically with the package.
 
 ------------------------------------------------------------------------
 
@@ -43,7 +43,7 @@ pymorsed <command> [arguments]
 For example:
 
 ``` bash
-pymorsed audioEncode "HELLO WORLD"
+pymorsed encode-audio "HELLO WORLD"
 ```
 
 To see the options available for any command:
@@ -59,14 +59,14 @@ pymorsed <command> --help
 The audio commands allow you to convert between text and Morse-code
 audio.
 
-## `audioEncode`
+## `encode-audio`
 
 Convert text into a Morse-code audio signal.
 
 ### Syntax
 
 ``` bash
-pymorsed audioEncode <text>
+pymorsed encode-audio <text>
 ```
 
 ### Argument
@@ -78,32 +78,33 @@ pymorsed audioEncode <text>
 ### Example
 
 ``` bash
-pymorsed audioEncode "HELLO WORLD"
+pymorsed encode-audio "HELLO"
+pymorsed encode-audio HELLO
 ```
 
-!!! tip "Using multiple words" Put text containing spaces inside
-quotation marks.
+!!! tip "Using multiple words" 
+      Put text containing spaces inside quotation marks.
 
     ```bash
-    pymorsed audioEncode "SOS HELP"
+    pymorsed encode-audio "SOS HELP"
     ```
 
 ### Command Help
 
 ``` bash
-pymorsed audioEncode --help
+pymorsed encode-audio --help
 ```
 
 ------------------------------------------------------------------------
 
-## `audioDecode`
+## `decode-audio`
 
 Convert Morse-code audio into text.
 
 ### Syntax
 
 ``` bash
-pymorsed audioDecode <audio_file>
+pymorsed decode-audio <audio_file>
 ```
 
 ### Argument
@@ -115,7 +116,7 @@ pymorsed audioDecode <audio_file>
 ### Example
 
 ``` bash
-pymorsed audioDecode morse.wav
+pymorsed decode-audio morse.wav
 ```
 
 The command reads the Morse-code signal from the audio file and outputs
@@ -124,7 +125,7 @@ the decoded text.
 ### Command Help
 
 ``` bash
-pymorsed audioDecode --help
+pymorsed decode-audio --help
 ```
 
 ------------------------------------------------------------------------
@@ -148,61 +149,51 @@ This displays the available commands and global options.
 Use:
 
 ``` bash
-pymorsed audioEncode --help
+pymorsed encode-audio --help
 ```
 
 or:
 
 ``` bash
-pymorsed audioDecode --help
+pymorsed decode-audio --help
 ```
 
 This displays the syntax, arguments, and description for the selected
 command.
 
-!!! tip "Not sure what to use?" Start with `pymorsed --help` and then
-open the help page for the command you want to use.
+!!! tip "Not sure what to use?" 
+      Start with `pymorsed --help` and then open the help page for the command you want to use.
 
 ------------------------------------------------------------------------
 
-# Command Reference
+## Command Reference
 
-  -------------------------------------------------------------------------
-  Command                               Description
-  ------------------------------------- -----------------------------------
-  `pymorsed --help`                     Display general CLI help.
+| Command | Description |
+|:---|:---|
+| `pymorsed --help` | Display general CLI help. |
+| `pymorsed encode-audio <text>` | Convert text to Morse-code audio. |
+| `pymorsed decode-audio <audio_file>` | Decode Morse-code audio into text. |
+| `pymorsed <command> --help` | Display help for a specific command. |
 
-  `pymorsed audioEncode <text>`         Convert text to Morse-code audio.
-
-  `pymorsed audioDecode <audio_file>`   Decode Morse-code audio into text.
-
-  `pymorsed <command> --help`           Display help for a specific
-                                        command.
-  -------------------------------------------------------------------------
-
-!!! warning "Keep this section updated" Update this command reference
-whenever a new CLI command is added to `cli.py`.
-
-------------------------------------------------------------------------
 
 # Examples
 
 ### Encode text
 
 ``` bash
-pymorsed audioEncode "SOS"
+pymorsed encode-audio "SOS"
 ```
 
 ### Encode a sentence
 
 ``` bash
-pymorsed audioEncode "HELLO WORLD"
+pymorsed encode-audio "HELLO WORLD"
 ```
 
 ### Decode an audio file
 
 ``` bash
-pymorsed audioDecode morse.wav
+pymorsed decode-audio morse.wav
 ```
 
 ### Explore available commands
@@ -225,8 +216,8 @@ pymorsed
 │
 ├── encode
 ├── decode
-├── audioEncode
-└── audioDecode
+├── encode-audio
+└── decode-audio
 ```
 
 Each subcommand has its own parser and arguments. This provides:
@@ -236,14 +227,15 @@ Each subcommand has its own parser and arguments. This provides:
 -   Argument validation
 -   Easy extension for future commands
 
-!!! info "Design principle" The CLI separates the command interface from
-the underlying Morse-code functionality. This allows the same library
-functionality to be used both programmatically from Python and
-interactively from the terminal.
+!!! info "Design principle" 
+      The CLI separates the command interface from
+      the underlying Morse-code functionality. This allows the same library
+      functionality to be used both programmatically from Python and
+      interactively from the terminal.
 
-------------------------------------------------------------------------
+<!-- ------------------------------------------------------------------------ -->
 
-# Typical Workflow
+<!-- # Typical Workflow
 
 A typical user workflow looks like this:
 
@@ -258,7 +250,7 @@ Choose a command
       │
       ├───────────────┐
       ▼               ▼
-audioEncode      audioDecode
+encode-audio      decode-audio
       │               │
       ▼               ▼
    Text            Audio file
@@ -268,4 +260,4 @@ Morse audio       Decoded text
 ```
 
 This makes the CLI a simple entry point for users who want to use
-`pymorsed` without writing Python code.
+`pymorsed` without writing Python code. -->
