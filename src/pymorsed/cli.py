@@ -40,6 +40,8 @@ import argparse
 
 from .encoder import encode
 from .decoder import decode
+from .audio_decoder import decode_from_file
+from .audio_encoder import play_audio, morse_to_audio, save_audio
 
 from importlib.metadata import version
 
@@ -88,6 +90,32 @@ def main():
         "text",
         help="Morse code to decode."
     )
+    
+    # -------------------------------------------------------------------------------------------------------------------
+    # audio decode command
+
+    audio_decode_parser = subparsers.add_parser(
+        "decode-audio",
+        help="Convert Morse code audio to text."
+    )
+    
+    audio_decode_parser.add_argument(
+        "audio_file",
+        help="Audio file containing Morse code to decode."
+    )
+    
+    # -------------------------------------------------------------------------------------------------------------------
+    # audio encode command
+
+    audio_encode_parser = subparsers.add_parser(
+        "encode-audio",
+        help="Convert text to Morse audio."
+    )
+
+    audio_encode_parser.add_argument(
+        "text",
+        help="Text to encode into Morse code audio."
+    )
 
     # -------------------------------------------------------------------------------------------------------------------
     # version command
@@ -110,10 +138,42 @@ def main():
     elif args.command == "decode":
         result = decode(args.text)
         print(result)
-
+        
+    elif args.command == "decode-audio":
+            result = decode_from_file(args.text)
+            print(result)
+    
+    elif args.command == "encode-audio":
+            morse = ".... . .-.. .-.. --- / -.- .- .. ... . / .... ---"
+            audio = morse_to_audio(encode(args.text))
+            play_audio(audio)
+            save_audio(audio, "hello.wav", 44100)
+    
     elif args.command == "version":
         print(f"pymorsed {PACKAGE_VERSION}")
 
 
 if __name__ == "__main__":
     main()
+    
+    
+    
+    
+# CLI for audio_encoder
+# CLI for audio_decoder
+
+# Update documentation
+
+# Update version number
+
+# Add another language
+
+# Upload to test.pypi
+# Check
+# Upload to pypi
+
+# Update README
+
+# Create Release
+
+# Check next feature to be released.
