@@ -16,6 +16,8 @@ FS = 44100
 FREQ = 700
 WPM = 20
 
+SUPPORTED_FORMATS = {".wav", ".flac", ".ogg", ".mp3"}
+
 def _wpm_to_unit(wpm:int):
     if wpm <= 0:
         raise ValueError("WPM must be positive")
@@ -68,11 +70,24 @@ def save_audio(audio, filename, fs):
         filename : str (e.g. 'morse.wav')
         fs : sample rate
     """
+    
+    filename = Path(filename)
+    
+    if not filename.suffix:
+        filename = filename.with_suffix(".wav")
+    
+    if filename.suffix.lower() not in SUPPORTED_FORMATS:
+        raise ValueError(
+            f"Unsupported audio format '{filename.suffix}'. "
+            f"Supported formats: {', '.join(sorted(SUPPORTED_FORMATS))}"
+        )
+    
     output_dir = Path("output")
     output_dir.mkdir(exist_ok=True)
     path = output_dir / filename
+    
     sf.write(path, audio, fs)
-    print("Saving to:", os.getcwd())
+    print("Saved to:", os.getcwd())
 
 
 def plot_waveform(audio, fs):

@@ -87,6 +87,12 @@ def main():
         "text",
         help="Text to encode into Morse code audio."
     )
+    
+    audio_encode_parser.add_argument(
+        "-o",
+        "--output",
+        help="Save the generated audio to the specified file."
+    )
 
     # -------------------------------------------------------------------------------------------------------------------
     # version command
@@ -115,10 +121,11 @@ def main():
             print(result)
     
     elif args.command == "encode-audio":
-            morse = ".... . .-.. .-.. --- / -.- .- .. ... . / .... ---"
             audio = morse_to_audio(encode(args.text))
             play_audio(audio)
-            save_audio(audio, "hello.wav", 44100)
+        
+            if args.output:
+                save_audio(audio, args.output, 44100)
     
     elif args.command == "version":
         print(f"pymorsed {PACKAGE_VERSION}")
@@ -142,3 +149,5 @@ if __name__ == "__main__":
 # Create Release
 
 # Check next feature to be released.
+
+# Changelog
