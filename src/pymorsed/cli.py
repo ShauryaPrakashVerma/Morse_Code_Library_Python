@@ -1,7 +1,5 @@
 # Obbjective: To make the pymorsed Library accessible from the CLI
 
-# pymorsed --help
-
 # Support Piping
 
 #        ↓
@@ -18,6 +16,21 @@ from importlib.metadata import version
 
 PACKAGE_VERSION = version("pymorsed")
 
+
+BANNER = r'''
+                                                      _ 
+                                                     | |
+ _ __   _   _  _ __ ___    ___   _ __  ___   ___   __| |
+| '_ \ | | | || '_ ` _ \  / _ \ | '__|/ __| / _ \ / _` |
+| |_) || |_| || | | | | || (_) || |   \__ \|  __/| (_| |
+| .__/  \__, ||_| |_| |_| \___/ |_|   |___/ \___| \__,_|
+| |      __/ |                                          
+|_|     |___/
+
+'''
+
+
+
 def main():
     parser = argparse.ArgumentParser(
         prog="pymorsed",
@@ -32,8 +45,7 @@ def main():
     )
 
     subparsers = parser.add_subparsers(
-        dest="command",
-        required=True
+        dest="command"
     )
 
     # -------------------------------------------------------------------------------------------------------------------
@@ -107,6 +119,11 @@ def main():
 
     # -------------------------------------------------------------------------------------------------------------------
     # Execute command
+    
+    if args.command is None:
+        print_banner()
+        parser.print_help()
+        return
 
     if args.command == "encode":
         result = encode(args.text)
@@ -117,18 +134,27 @@ def main():
         print(result)
         
     elif args.command == "decode-audio":
-            result = decode_from_file(args.text)
-            print(result)
+        result = decode_from_file(args.text)
+        print(result)
     
     elif args.command == "encode-audio":
-            audio = morse_to_audio(encode(args.text))
-            play_audio(audio)
-        
-            if args.output:
-                save_audio(audio, args.output, 44100)
+        audio = morse_to_audio(encode(args.text))
+        play_audio(audio)
+    
+        if args.output:
+            save_audio(audio, args.output, 44100)
     
     elif args.command == "version":
         print(f"pymorsed {PACKAGE_VERSION}")
+
+
+def print_banner():
+    GREEN = "\033[92m"
+    RESET = "\033[0m"
+
+    print(f"{GREEN}{BANNER}{RESET}")
+
+
 
 
 if __name__ == "__main__":
