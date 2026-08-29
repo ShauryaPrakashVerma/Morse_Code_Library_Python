@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pymorsed"
-version = "0.1.0"
+version = "0.2.0"
 description = "Encode, decode, generate, and analyze Morse code audio signals in Python."
 authors = [{ name = "Shaurya Prakash Verma", email = "shauryapv@gmail.com"}]
 readme = "README.md"
