@@ -1,10 +1,3 @@
-# Obbjective: To make the pymorsed Library accessible from the CLI
-
-# Support Piping
-
-#        ↓
-# 16. Add audio commands
-
 import argparse
 
 from .encoder import encode
@@ -159,21 +152,3 @@ def print_banner():
 
 if __name__ == "__main__":
     main()
-    
-    
-
-
-# Update version number
-
-
-# Upload to test.pypi
-# Check
-# Upload to pypi
-
-# Update README
-
-# Create Release
-
-# Check next feature to be released.
-
-# Changelog
