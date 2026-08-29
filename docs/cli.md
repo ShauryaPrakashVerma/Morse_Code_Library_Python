@@ -170,7 +170,7 @@ Convert Morse-code audio into text.
 ### Syntax
 
 ``` bash
-pymorsed decode-audio <audio_file>
+pymorsed decode-audio <audio_file_path>
 ```
 
 ### Argument
@@ -238,7 +238,7 @@ command.
 |:---|:---|
 | `pymorsed --help` | Display general CLI help. |
 | `pymorsed encode-audio <text>` | Convert text to Morse-code audio. |
-| `pymorsed decode-audio <audio_file>` | Decode Morse-code audio into text. |
+| `pymorsed decode-audio <audio_file_path>` | Decode Morse-code audio into text. |
 | `pymorsed <command> --help` | Display help for a specific command. |
 
 
@@ -259,7 +259,7 @@ pymorsed encode-audio "HELLO WORLD"
 ### Decode an audio file
 
 ``` bash
-pymorsed decode-audio morse.wav
+pymorsed decode-audio "E://audios/morse.wav"
 ```
 
 ### Explore available commands

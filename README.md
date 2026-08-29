@@ -202,7 +202,7 @@ The output filename extension is optional. If no extension is provided,
 Decode a Morse code audio file:
 
 ```bash
-pymorsed decode-audio sos.wav
+pymorsed decode-audio "E://audios/sos.wav"
 ```
 
 Display the available commands:
