@@ -1,31 +1,62 @@
-# pymorsed
+```text
+                                                      _ 
+                                                     | |
+ _ __   _   _  _ __ ___    ___   _ __  ___   ___   __| |
+| '_ \ | | | || '_ ` _ \  / _ \ | '__|/ __| / _ \ / _` |
+| |_) || |_| || | | | | || (_) || |   \__ \|  __/| (_| |
+| .__/  \__, ||_| |_| |_| \___/ |_|   |___/ \___| \__,_|
+| |      __/ |                                          
+|_|     |___/
 
-A Python library for encoding, decoding, generating, and analyzing Morse code audio signals.
 
-📦 PyPI: https://pypi.org/project/pymorsed/
+```
 
-📖 Documentation: https://shauryaprakashverma.github.io/pymorsed/
+A Python library for Morse code processing, supporting text encoding/decoding, multi-language mappings, audio signal generation and decoding, and waveform visualization.
 
-[![PyPI Downloads](https://static.pepy.tech/personalized-badge/pymorsed?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/pymorsed)
-<br>
+<p align="left">
+  <a href="https://pypi.org/project/pymorsed/">PyPI</a> •
+  <a href="https://shauryaprakashverma.github.io/pymorsed/">Documentation</a>
+</p>
+
+
+<p align="left">
+  <a href="https://pepy.tech/projects/pymorsed">
+    <img src="https://static.pepy.tech/personalized-badge/pymorsed?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads" alt="PyPI Downloads">
+  </a>
+</p>
+
+
+---
 
 ## Features
 
-* Convert text to Morse code
-* Convert Morse code to text
-* Multi-language support
+- Convert text to Morse code
+- Convert Morse code to text
+- Multi-language support
+  - English
+  - Russian
+  - Hindi
+- Generate Morse code audio signals
+- Decode Morse code from WAV audio files
+- Visualize Morse code waveforms
+- JSON-based language mappings
+- Command-Line Interface (CLI)
+- Fully tested with automated CI pipeline
 
-  * English
-  * Russian
-* Generate Morse code audio signals
-* Decode Morse code from WAV audio files
-* Visualize Morse code waveforms
-* JSON-based language mappings
-* Fully tested with automated CI pipeline
+---
 
+## Quick Start
 
+Get started with the most commonly used features:
 
-<br>
+- [Encode text to Morse code](#encode-text)
+- [Decode Morse code to text](#decode-morse-code)
+- [Generate Morse audio](#generate-morse-audio)
+- [Save Morse audio to a file](#save-audio-to-file)
+- [Decode a Morse audio file](#decode-audio-file)
+- [Use the Command-Line Interface (CLI)](#command-line-interface-cli)
+
+---
 
 ## Installation
 
@@ -35,16 +66,17 @@ pip install pymorsed
 
 ---
 
-<br>
-
-## Quick Start
+## Quick Start Examples
 
 ### Encode Text
+
+Convert text into Morse code:
 
 ```python
 from pymorsed import encode
 
 morse = encode("HELLO WORLD")
+
 print(morse)
 ```
 
@@ -54,14 +86,15 @@ Output:
 .... . .-.. .-.. --- / .-- --- .-. .-.. -..
 ```
 
----
-
 ### Decode Morse Code
+
+Convert Morse code into text:
 
 ```python
 from pymorsed import decode
 
 text = decode(".... . .-.. .-.. --- / .-- --- .-. .-.. -..")
+
 print(text)
 ```
 
@@ -71,28 +104,26 @@ Output:
 HELLO WORLD
 ```
 
----
-
 ### Generate Morse Audio
+
+Generate and play a Morse code audio signal:
 
 ```python
 from pymorsed import encode
-from pymorsed.audio_encoder import morse_to_audio
+from pymorsed.audio_encoder import morse_to_audio, play_audio
 
 morse = encode("SOS")
 audio = morse_to_audio(morse)
+
 play_audio(audio)
 ```
 
----
-
 ### Save Audio to File
 
+Save a generated Morse code audio signal:
+
 ```python
-from pymorsed.audio_encoder import (
-    morse_to_audio,
-    save_audio
-)
+from pymorsed.audio_encoder import morse_to_audio, save_audio
 
 audio = morse_to_audio("... --- ...")
 
@@ -103,9 +134,9 @@ save_audio(
 )
 ```
 
----
-
 ### Decode Audio File
+
+Decode Morse code from a WAV audio file:
 
 ```python
 from pymorsed.audio_decoder import decode_from_file
@@ -123,16 +154,90 @@ SOS
 
 ---
 
+## Command-Line Interface (CLI)
+
+`pymorsed` also provides a command-line interface for performing common Morse
+code and audio operations directly from the terminal.
+
+### Available Commands
+
+```text
+pymorsed
+├── encode
+├── decode
+├── encode-audio
+├── decode-audio
+└── version
+```
+
+### CLI Examples
+
+Encode text into Morse code:
+
+```bash
+pymorsed encode "HELLO WORLD"
+```
+
+Decode Morse code into text:
+
+```bash
+pymorsed decode ".... . .-.. .-.. ---"
+```
+
+Generate and play Morse code audio:
+
+```bash
+pymorsed encode-audio "SOS"
+```
+
+Save generated audio to a file:
+
+```bash
+pymorsed encode-audio "SOS" -o sos
+```
+
+The output filename extension is optional. If no extension is provided,
+`.wav` is used by default.
+
+Decode a Morse code audio file:
+
+```bash
+pymorsed decode-audio sos.wav
+```
+
+Display the available commands:
+
+```bash
+pymorsed --help
+```
+
+Display the installed version:
+
+```bash
+pymorsed --version
+```
+
+or:
+
+```bash
+pymorsed version
+```
+
+For the complete CLI reference, see the
+[pymorsed CLI Documentation](https://shauryaprakashverma.github.io/pymorsed/).
+
+---
+
 ## Morse Code Conventions
 
-pymorsed follows standard Morse code formatting:
+`pymorsed` follows standard Morse code formatting:
 
-| Symbol      | Meaning          |
-| ----------- | ---------------- |
-| `.`         | Dot              |
-| `-`         | Dash             |
+| Symbol | Meaning |
+| ------ | ------- |
+| `.` | Dot |
+| `-` | Dash |
 | Space (` `) | Letter separator |
-| `/`         | Word separator   |
+| `/` | Word separator |
 
 Example:
 
@@ -150,10 +255,11 @@ becomes:
 
 ## Supported Languages
 
-| Language | Code      |
-| -------- | --------- |
-| English  | `english` |
-| Russian  | `russian` |
+| Language | Code |
+| -------- | ---- |
+| English | `english` |
+| Russian | `russian` |
+| Hindi | `hindi` |
 
 Additional language mappings may be added in future releases.
 
@@ -184,8 +290,7 @@ from pymorsed.audio_encoder import (
 from pymorsed.audio_decoder import decode_from_file
 ```
 
-<br>
-
+---
 
 # Development
 
@@ -214,13 +319,10 @@ Run tests with coverage:
 pytest --cov=pymorsed
 ```
 
-<br>
+---
 
 # License
 
 This project is licensed under the MIT License.
 
 See the LICENSE file for details.
-
-<br>
-
