@@ -83,8 +83,8 @@ def main():
     )
     
     audio_decode_parser.add_argument(
-        "audio_file",
-        help="Audio file containing Morse code to decode."
+        "file_path",
+        help="Path to the audio file containing Morse code to decode."
     )
     
     # -------------------------------------------------------------------------------------------------------------------
@@ -134,7 +134,7 @@ def main():
         print(result)
         
     elif args.command == "decode-audio":
-        result = decode_from_file(args.text)
+        result = decode_from_file(args.file_path)
         print(result)
     
     elif args.command == "encode-audio":
