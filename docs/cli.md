@@ -123,6 +123,7 @@ The output format is determined by the file extension. Supported formats include
 - `.wav`
 - `.flac`
 - `.ogg`
+- `.mp3`
 
 You **do not need to provide the file extension explicitly**. If no extension is provided, `.wav` is used by default.
 
@@ -137,6 +138,8 @@ saves the audio as:
 ```text
 output/sos.wav
 ```
+
+
 
 You can also explicitly specify a supported extension:
 
@@ -175,14 +178,14 @@ pymorsed decode-audio <audio_file_path>
 
 ### Argument
 
-  Argument        Required  Description
-  -------------- ---------- -----------------------------------------------
-  `audio_file`      Yes     Path to the audio file containing Morse code.
+| Argument | Required | Description |
+| -------- | -------- | ----------- |
+| `audio_file_path` | Yes | Path to the audio file containing Morse code. |
 
 ### Example
 
 ``` bash
-pymorsed decode-audio morse.wav
+pymorsed decode-audio "E://audios/morse.wav"
 ```
 
 The command reads the Morse-code signal from the audio file and outputs
